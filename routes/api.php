@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('books', 'App\Http\Controllers\Api\BookController@getAllBooks');
-Route::get('books/{id}', 'App\Http\Controllers\Api\BookController@getBook');
-Route::post('books', 'App\Http\Controllers\Api\BookController@createBook');
-Route::put('books/{id}', 'App\Http\Controllers\Api\BookController@updateBook');
-Route::delete('books/{id}', 'App\Http\Controllers\Api\BookController@deleteBook');
+Route::get('books', [BookController::class, 'getAllBooks']);
+Route::get('books/{id}', [BookController::class, 'getBook']);
+Route::post('books', [BookController::class, 'createBook']);
+Route::put('books/{id}', [BookController::class, 'updateBook']);
+Route::delete('books/{id}', [BookController::class, 'deleteBook']);
